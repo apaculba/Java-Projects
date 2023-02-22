@@ -1,0 +1,49 @@
+# Java-Projects
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner kbd = new Scanner(System.in);
+        System.out.println("How many items?");
+
+        int size = kbd.nextInt();
+        int[] data = new int[size];
+
+        for (int i = 0; i < data.length; i++) {
+            System.out.println("What is your value " + (i + 1));
+            data[i] = kbd.nextInt();
+        }
+
+        float[] newArray = new float[9];
+        int count = 1;
+        for (int i = 0; i < newArray.length; i++) {
+            for (int j = 0; j < data.length; j++) {
+                if (data[j] / 100 == count || data[j] / 1000 == count) {
+                    newArray[i] += 1;
+                }
+            }
+            count++;
+        }
+
+
+        float [] results = new float[newArray.length];
+        for (int i = 0; i < newArray.length; i++) {
+            results[i] = newArray[i] / data.length * 100;
+        }
+
+        printArray2(results);
+    }
+
+    private static void printArray(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.println("[" + i + "] = " + a[i]);
+        }
+    }
+
+    private static void printArray2(float[] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.println((i+1) + ": " + a[i] + "%");
+        }
+    }
+}
